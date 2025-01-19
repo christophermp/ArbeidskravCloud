@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Todo API", Version = "v1" });
 });
 
+// Add DB Context
 builder.Services.AddDbContext<TodoDb>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -25,6 +26,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
 });
 
+// Database initialization with retry logic
 var retryCount = 0;
 const int maxRetries = 10;
 const int retryDelaySeconds = 5;
@@ -40,7 +42,7 @@ while (retryCount < maxRetries)
             break;
         }
     }
-    catch (Exception ex)
+    catch (Exception)
     {
         retryCount++;
         if (retryCount == maxRetries)
@@ -75,6 +77,7 @@ app.MapPost("/todos", async (TodoRequest todoRequest, TodoDb db) =>
 
 app.Run();
 
+// Model classes
 public class Todo
 {
     [Key]
@@ -84,3 +87,10 @@ public class Todo
 }
 
 public record TodoRequest(string Title);
+
+// DbContext
+public class TodoDb : DbContext
+{
+    public TodoDb(DbContextOptions<TodoDb> options) : base(options) { }
+    public DbSet<Todo> Todos => Set<Todo>();
+}
