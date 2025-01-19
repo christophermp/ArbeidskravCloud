@@ -1,0 +1,47 @@
+﻿version: '3.8'
+
+services:
+  nginx:
+    image: christophermp/arbeidskrav-nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      api:
+        condition: service_started
+
+  api:
+    image: christophermp/arbeidskrav-api:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=arbeidskrav;User=root;Password=masterpw3000;
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=masterpw3000
+      - MYSQL_DATABASE=arbeidskrav
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbeidskravCloud", "ArbeidskravCloud\ArbeidskravCloud.csproj", "{BE4447BA-7789-45C2-A674-F504DE2F4FA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89D7ED97-5B3C-45F3-9734-6771E43BD3B8}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE4447BA-7789-45C2-A674-F504DE2F4FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4447BA-7789-45C2-A674-F504DE2F4FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4447BA-7789-45C2-A674-F504DE2F4FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4447BA-7789-45C2-A674-F504DE2F4FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE4447BA-7789-45C2-A674-F504DE2F4FA4} = {89D7ED97-5B3C-45F3-9734-6771E43BD3B8}
+	EndGlobalSection
+EndGlobal
