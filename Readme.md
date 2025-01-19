@@ -10,7 +10,7 @@ Prosjektet inneholder en "stacked" Todo API med følgende komponenter:
 
 1. Last ned docker-compose.yml:
 ```bash
-curl -O https://raw.githubusercontent.com/lollolololololololol/docker-compose.yml
+curl -O https://raw.githubusercontent.com/christophermp/ArbeidskravCloud/refs/heads/main/docker-compose.yaml
 ```
 
 2. Start tjenestene:
